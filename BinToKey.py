@@ -2,12 +2,24 @@ import usb.core
 import keyboard
 import usb.util
 import time
+import libusb
+import libusb_package
+import sys
+from usb.backend import libusb1
+be=libusb1.get_backend()
+for dev in libusb_package.find(find_all=True):
+    if(dev.idVendor==0x0b43):
+
+        print(dev)
 
 dev=usb.core.find(idVendor=0x0b43,idProduct=0x0001)
 ep=dev[0].interfaces()[0].endpoints()[0]
 i=dev[0].interfaces()[0].bInterfaceNumber
 dev.set_configuration()
 eaddr=ep.bEndpointAddress
+blen=ep.bLength
+
+
 def get_input(value,valoo):
     if (value & (1 << 6)) != 0:
        
@@ -62,8 +74,10 @@ def get_input(value,valoo):
 print("started")
 while(True):
     try:
-        
-        get_input(dev.read(129,7,10000).tolist()[1],dev.read(129,7,10000).tolist()[0])
+        pass
+        #print(dev.read(eaddr,blen,10000).tolist()[1])
+        print(dev.read(eaddr,blen,10000).tolist()[0])
+        #get_input(dev.read(eaddr,blen,10000).tolist()[1],dev.read(eaddr,blen,10000).tolist()[0])
     except usb.core.USBError:
         print("dropped")
 
