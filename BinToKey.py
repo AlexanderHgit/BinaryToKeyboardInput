@@ -13,7 +13,7 @@ import keyboard
 windowWidth = 460
 windowHeight = 350
 window = tk.Tk()
-window.title("USB Device Interface")
+window.title("Binary to keyboard input")
 window.geometry('{}x{}'.format(windowWidth, windowHeight))
 window.tk.call('tk', 'scaling', 3.0)
 
