@@ -1,4 +1,4 @@
-#README
+# README
 
 This program is meant to bind keyboard inputs to binary data received from a selected device.
 
