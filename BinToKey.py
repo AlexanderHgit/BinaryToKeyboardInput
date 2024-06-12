@@ -26,7 +26,7 @@ inputs = {}
 deviceVendorId = 0xffff
 devicendPointroductId = 0xffff
 device = None
-backend = libusb1.get_backend()
+
 endPoint = None
 interface = None
 endpointAddress = None
